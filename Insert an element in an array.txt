@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+void insertElement(int arr[], int *n, int element, int position) {
+    for (int i = *n; i >= position; i--) {
+        arr[i] = arr[i - 1];
+    }
+    arr[position - 1] = element;
+    (*n)++;
+}
+
+int main() {
+    int arr[100], n, element, position;
+
+    printf("Enter the number of elements in the array: ");
+    scanf("%d", &n);
+
+    printf("Enter %d elements:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter the element to be inserted: ");
+    scanf("%d", &element);
+    printf("Enter the position where the element is to be inserted: ");
+    scanf("%d", &position);
+
+    if (position < 1 || position > n + 1) {
+        printf("Invalid position!\n");
+    } else {
+        insertElement(arr, &n, element, position);
+
+        printf("Array after insertion:\n");
+        for (int i = 0; i < n; i++) {
+            printf("%d ", arr[i]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
